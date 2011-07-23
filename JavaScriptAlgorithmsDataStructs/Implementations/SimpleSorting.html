@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js "></script>
+        <script type="text/javascript" src="../Scripts/Algorithms.js "></script>
+        <script type="text/javascript">       
+            $(document).ready(function() {
+                var sort = function(algorithm){
+                    var results = $("#results");
+                    
+                    //Clear results
+                    results.empty();
+            
+                    //Define array
+                    var sortArr = new algorithms.sortArray();               
+                          
+                    //Push some elements to the array
+                    sortArr.push(100);
+                    sortArr.push(90);
+                    sortArr.push(80);
+                    sortArr.push(70);
+                    sortArr.push(60);
+                    sortArr.push(50);
+                    sortArr.push(40);
+                    sortArr.push(30);
+                    sortArr.push(20);
+                    sortArr.push(10);                           
+                    
+                    //Draw Elements
+                    var drawElements = function(elements) {                            
+                        var chd = "";
+                        
+                        for (var e in elements) {
+                            chd += elements[e].toString() + ",";
+                        }
+                        
+                        chd = chd.substring(0, chd.length - 1);                        
+                        
+                        var chartUrlBase = "http://chart.apis.google.com/chart?chxt=y&chbh=a&chs=300x225&cht=bvg&chco=A2C180,3D7930&chtt=Sorting";
+                        var chartUrlComplete = chartUrlBase + "&chd=t:" + chd;                 
+                        
+                        $("#results").append("<img src='" + chartUrlComplete + "'/>").append("<br/>");                                                                                                                                         
+                    }               
+                    
+                    sortArr.onSort = drawElements;                               
+                    
+                    if (algorithm === "bubble"){
+                        sortArr.bubbleSort();                    
+                    }
+                    if (algorithm === "selection"){
+                        sortArr.selectionSort();    
+                    }
+                    if (algorithm === "insertion") {
+                        sortArr.insertionSort();    
+                    }                             
+                };
+            
+                $("#bubbleSort").click(function() { sort("bubble") });                               
+                $("#selectionSort").click(function() { sort("selection") });
+                $("#insertionSort").click(function() { sort("insertion") });
+            });
+        </script>
+    </head>
+    <body>
+        <input type="button" value="BubbleSort" id="bubbleSort"/>
+        <input type="button" value="SelectionSort" id="selectionSort"/>
+        <input type="button" value="InsertionSort" id="insertionSort"/>
+        <div id="results">           
+        </div>
+    </body>
+</html>

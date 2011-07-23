@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>LinkedList</title>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-git.js"></script>
+        <script type="text/javascript" src="../Scripts/DataStructures.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/qunit/qunit-git.css"></style>        
+        <script type="text/javascript">                                                                			
+            test("InsertFirst adds first node.", function() {
+                var linkedList = new dataStructures.linkedList();                
+                
+                linkedList.insertFirst("First.");                
+                linkedList.insertLast("Last.");               
+                                                
+                equals("First.", linkedList.getFirst().data);
+            });            
+                       
+            test("InsertLast adds last node.", function() {
+               var linkedList = new dataStructures.linkedList();                
+                
+                linkedList.insertFirst("First.");
+                linkedList.insertLast("Last.");                               
+                                                   
+                equals("Last.", linkedList.getLast().data); 
+            });
+            
+             test("DeleteFirst deletes first node.", function() {
+                var linkedList = new dataStructures.linkedList();                
+                
+                linkedList.insertFirst("First.");
+                linkedList.deleteFirst();               
+                                                
+                equals(null, linkedList.getFirst());
+            });  
+            
+            test("DeleteLast deletes last node.", function() {
+                var linkedList = new dataStructures.linkedList();
+                
+                linkedList.insertLast("Last.");
+                linkedList.deleteLast();
+                
+                equals(null, linkedList.getLast());
+            });
+            
+            test("InsertAfter inserts after node.", function() {
+                var linkedList = new dataStructures.linkedList();
+                
+                linkedList.insertFirst("First");
+                linkedList.insertAfter("First", "Second");
+                linkedList.insertAfter("Second", "Third");                
+                                
+                equals("Second", linkedList.getFirst().next.data);
+                equals("Third", linkedList.getFirst().next.next.data);
+            });
+            
+             test("InsertAfter can insert after last node.", function() {
+                var linkedList = new dataStructures.linkedList();
+                
+                linkedList.insertFirst("First");
+                linkedList.insertLast("Last");
+                linkedList.insertAfter("Last", "Real last");                
+                                
+                equals("Real last", linkedList.getLast().data);
+            });
+            
+            test("Deletekey deletes correct node.", function() {
+                var linkedList = new dataStructures.linkedList();
+                
+                linkedList.insertFirst("First");
+                linkedList.insertAfter("First", "Second");
+                linkedList.insertAfter("Second", "Third");
+                linkedList.insertAfter("Third", "Fourth");
+                linkedList.deleteKey("Second");
+                                
+                equals("Third", linkedList.getFirst().next.data);
+            });
+            
+            test("Deletekey can delete first node.", function() {
+                var linkedList = new dataStructures.linkedList();
+                
+                linkedList.insertFirst("First");                                      
+                linkedList.deleteKey("First");
+                                
+                equals(null, linkedList.getFirst());
+            });
+            
+            test("Deletekey can delete last node.", function() {
+                var linkedList = new dataStructures.linkedList();
+                
+                linkedList.insertLast("Last");                                      
+                linkedList.deleteKey("Last");
+                                
+                equals(null, linkedList.getLast());
+            });           
+           
+        </script>
+    </head>
+    <body>
+        <h1 id="qunit-header">LinkedList implementation</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">test markup, will be hidden</div>
+    </body>
+</html>

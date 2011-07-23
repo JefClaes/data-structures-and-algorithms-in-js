@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataStructures.js"></script>
+        <script type="text/javascript">                      
+            $(document).ready(function() {
+                var testStack = function() {
+                    var stackTopResults = $("#stackTopResults");
+                    var popResults = $("#popResults");
+                                
+                    var someStack = new dataStructures.stack();
+                    
+                    someStack.push(1);
+                    someStack.push(2);
+                    someStack.push(3);
+                    
+                    var stackTopResult = someStack.stackTop();                                                 
+                    
+                    stackTopResults.html(stackTopResult);
+                    
+                    var popResult = "";
+                    
+                    popResult += someStack.pop();
+                    popResult += someStack.pop();
+                    popResult += someStack.pop();
+                    
+                    popResults.html(popResult);     
+                }
+                
+                var testQueue = function(){
+                    var queuePeekResults = $("#queuePeekResults");
+                    var dequeueResults = $("#dequeueResults");
+                    
+                    var someQueue = new dataStructures.queue();
+                    
+                    someQueue.enqueue(1);
+                    someQueue.enqueue(2);
+                    someQueue.enqueue(3);               
+                                    
+                    var queuePeekResult = someQueue.peek();
+                    
+                    queuePeekResults.html(queuePeekResult);
+                    
+                    var dequeueResult = "";                   
+                                        
+                    dequeueResult += someQueue.dequeue();
+                    dequeueResult += someQueue.dequeue();
+                    dequeueResult += someQueue.dequeue();                   
+                                        
+                    dequeueResults.html(dequeueResult);                
+                }            
+            
+                testStack();
+                testQueue();                
+            });                                  
+            
+        </script>
+    </head>
+    <body>
+        <h3>Stack Top</h3>
+        <div id="stackTopResults">            
+        </div>
+        <h3>Stack Pop</h3>
+        <div id="popResults">            
+        </div>
+        <h3>Queue Peek</h3>
+        <div id="queuePeekResults">            
+        </div>
+        <h3>Queue Dequeue</h3>
+        <div id="dequeueResults">            
+        </div>
+    </body>
+</html>
