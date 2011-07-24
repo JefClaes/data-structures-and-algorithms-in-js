@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MergeSort</title>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-git.js"></script>
+        <script type="text/javascript" src="../Scripts/Algorithms.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/qunit/qunit-git.css"></style>        
+        <script type="text/javascript">                                                                			
+            test("MergeSort sorts.", function() {
+                var sortArray = new algorithms.sortArray();
+                
+                sortArray.push(15);
+                sortArray.push(50);
+                sortArray.push(60);
+                sortArray.push(1);
+                sortArray.push(22);
+                sortArray.push(90);
+                sortArray.push(10);
+                sortArray.push(12);            
+                sortArray.push(25);  
+                sortArray.push(17); 
+                sortArray.push(130); 
+              
+                var actual = sortArray.mergeSort();                               
+                var expected = [1, 10, 12, 15, 17, 22, 25, 50, 60, 90, 130];
+                
+                deepEqual(actual, expected);
+            });              
+        </script>
+    </head>
+    <body>
+        <h1 id="qunit-header">LinkedList implementation</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">test markup, will be hidden</div>
+    </body>
+</html>
