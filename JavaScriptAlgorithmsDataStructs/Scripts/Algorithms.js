@@ -8,7 +8,7 @@
             elements[two] = tmp;                    
         };           
              
-        internalMergeSort = function(elements, onSort){            
+        var internalMergeSort = function(elements, onSort){            
             if (elements.length < 2){                               
                 return elements;  
             }           
