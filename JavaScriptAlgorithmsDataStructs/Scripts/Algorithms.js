@@ -22,8 +22,8 @@
            
             // Conquer                                                                                                        
             var mergingResult = merge(internalMergeSort(leftRange, onSort), 
-                                      internalMergeSort(rightRange, onSort));           
-                        
+                                      internalMergeSort(rightRange, onSort));                                   
+                     
             onSort(mergingResult);           
                        
             return mergingResult;
@@ -48,8 +48,8 @@
             }
             
             return res;
-        };
-                    
+        };             
+        
         this.onSort = function() {};              
         this.push = function(val){
             elements.push(val);                    
@@ -102,7 +102,7 @@
             
             return elements;
         };
-        this.mergeSort = function() {                                  
+        this.mergeSort = function() {                                              
             elements = internalMergeSort(elements, this.onSort);                      
             
             return elements;
